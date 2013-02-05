@@ -1,0 +1,43 @@
+<html>
+<head>
+<style>
+BODY {
+	font-size: 36pt;
+	font-family: Arial;
+}
+</style>
+<script src="http://10.0.2.1:8082/socket.io/socket.io.js"></script>
+<script>
+  console.log('app started');
+  
+  var socket = io.connect('http://10.0.2.1:8082');
+  var teamAScore = 0;
+  var teamBScore = 0;
+  
+  socket.on('rope', function (data) {
+    console.log('Got rope signal');
+    
+    if (data == 'A'){
+    	teamAScore++;
+    } else {
+    	teamBScore++;
+    }
+    updateScores();
+    
+    navigator.cascades.postMessage(data);
+    
+  });
+  
+  function updateScores(){
+  		document.getElementById('teamAScore').innerHTML = 'Team A: '+teamAScore;
+  		document.getElementById('teamBScore').innerHTML = 'Team B: '+teamBScore;
+  }
+</script>
+</head>
+<body onload="updateScores()">
+
+<div id="teamAScore" style="float:left"></div>
+<div id="teamBScore" style="float:right"></div>
+
+</body>
+</html>

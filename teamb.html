@@ -1,0 +1,19 @@
+<html>
+<head>
+<title></title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="http://10.0.2.1:8082/socket.io/socket.io.js"></script>
+<script>
+  var socket = io.connect('http://10.0.2.1:8082');
+  socket.on('ready', function (data) {
+    console.log(data);
+  });
+  function sendData(){
+  	socket.emit('pull', 'B');
+  }
+</script>
+</head>
+<body>
+<button onclick="sendData()" class="bRight">Pull B</button>
+</body>
+</html>
