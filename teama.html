@@ -1,20 +1,11 @@
 <html>
 <head>
-<title></title>
-<link rel="stylesheet" type="text/css" href="style.css">
+<title>Welcome Team A!</title>
+<link rel="stylesheet" href="style.css" type="text/css">
 <script src="http://10.0.2.1:8082/socket.io/socket.io.js"></script>
-<script>
-  var socket = io.connect('http://10.0.2.1:8082');
-  socket.on('ready', function (data) {
-    console.log(data);
-  });
-  function sendData(){
-  	console.log('emitting pull A');
-  	socket.emit('pull', 'A');
-  }
-</script>
+<script src="client.js"></script>
 </head>
 <body>
-<button onclick="sendData()" class="bLeft">Pull A</button>
+<button class="bLeft" onclick="pull(-1)"> Pull A </button> 
 </body>
 </html>
