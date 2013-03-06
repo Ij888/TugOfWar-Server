@@ -10,23 +10,20 @@
     <script>
       console.log('app started');
       
-      var socket = io.connect('http://192.168.1.148:8082');
-      socket.emit('itsamemario')
       var teamAScore = 0;
       var teamBScore = 0;
       
+      var socket = io.connect('http://192.168.1.148:8082');
+      socket.emit('itsamemario')
+      
       socket.on('rope', function (data) {
-        console.log('Got rope signal');
-        
         if (data == -1){
         	teamAScore++;
         } else {
         	teamBScore++;
         }
         updateScores();
-        
         navigator.cascades.postMessage(data);
-        
       });
       
       function updateScores(){
