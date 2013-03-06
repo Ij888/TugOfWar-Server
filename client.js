@@ -1,9 +1,5 @@
-var socket = io.connect('http://192.168.1.148:8082');
-socket.on('ready', function(data){
-	console.log(data);
-});
-
+var socket =io.connect('http://localhost:8082');
 function pull(direction){
-console.log('sending pull');
 	socket.emit('pull', direction);
+	console.log('Received pull '+direction);
 }
