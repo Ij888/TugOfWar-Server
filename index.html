@@ -1,12 +1,18 @@
 <html>
-<head>
-<title></title>
-<link rel="stylesheet" type="text/css" href="style.css">
-<script src="http://localhost:8082/socket.io/socket.io.js"></script>
-<script src="client.js"></script>
-</head>
-<body>
-<button onclick="pull(-1)" class="bLeft">Pull Left</button>
-<button onclick="pull(1)" class="bRight">Pull Right</button>
-</body>
+  	<head>
+  	<title>Tug Of War - Choose a side</title>
+  	<link rel="stylesheet" type="text/css" href="style.css">
+  	<script src="http://192.168.1.148:8082/socket.io/socket.io.js"></script>
+  	<script>
+    	var socket =io.connect('http://192.168.1.148:8082');
+		function pull(direction){
+			socket.emit('pull', direction);
+			console.log('Received pull '+direction);
+		}
+	</script>
+	</head>
+	<body>
+		<button onclick="pull(-1)" class="bLeft">Pull Left</button>
+		<button onclick="pull(1)" class="bRight">Pull Right</button>
+	</body>
 </html>
